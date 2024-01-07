@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  db:
+    ports:
+      - 8082:5432
+    container_name:  postgresql_container
+    image: postgres
+    environment:
+      - POSTGRES_DB=todo
+      - POSTGRES_PASSWORD=lambofgod94
+      - POSTGRES_USER=postgres
+    volumes:
+      - /var/lib/postgresql/data
+    restart: always
+
+  backend:
+   # build:
+     # dockerfile: ./Dockerfile
+     # context: .
+    image: abcd
+    container_name: todoapp_container
+    ports:
+      - 8081:8081
+    environment:
+      PORT: 8081
+      DATASOURCE_USER: postgres
+      DATASOURCE_PASSWORD: lambofgod94
+      DATASOURCE_URL: jdbc:postgresql://postgresql_container:5432/todo
+    depends_on:
+      - db
+    restart: always
+
+
+
+
+
+
+
