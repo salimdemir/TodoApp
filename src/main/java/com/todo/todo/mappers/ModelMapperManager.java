@@ -10,9 +10,10 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 
-public class ModelMapperManager implements ModelMapperService{
+public class ModelMapperManager implements ModelMapperService {
 
     private ModelMapper modelMapper;
+
     @Override
     public ModelMapper forResponse() {
 
@@ -31,4 +32,5 @@ public class ModelMapperManager implements ModelMapperService{
                 .setMatchingStrategy(MatchingStrategies.STANDARD);
         return this.modelMapper;
     }
+
 }

@@ -9,14 +9,15 @@ import java.util.List;
 
 public interface TodoService {
 
-    List<TodoResponse>listAll();
+    List<TodoResponse> listAll();
+
     void save(TodoRequest todoRequest);
 
     void delete(int id);
 
-   GetByIdResponse getById(int id);
+    GetByIdResponse getById(int id);
 
-void update(int id, UpdateTodoRequest updateTodoRequest);
+    void update(int id, UpdateTodoRequest updateTodoRequest);
 
 
 }

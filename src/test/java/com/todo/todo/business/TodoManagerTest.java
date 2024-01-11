@@ -52,11 +52,11 @@ class TodoManagerTest {
     }
 
     @Test
-    public void shouldUpdateTodo(){
+    public void shouldUpdateTodo() {
         //given
-        Mockito.when(todoRepository.findById(123)).thenReturn(Optional.of(new Todo(123,"Todo",false)));
+        Mockito.when(todoRepository.findById(123)).thenReturn(Optional.of(new Todo(123, "Todo", false)));
         //when
-        todoManager.update(123 ,new UpdateTodoRequest("updated todo",true));
+        todoManager.update(123, new UpdateTodoRequest("updated todo", true));
 
         //then
         Mockito.verify(todoRepository).save(new Todo(123, "updated todo", true));
@@ -68,5 +68,6 @@ class TodoManagerTest {
                 new Todo(2, "title 2", true),
                 new Todo(3, "title 3", false));
     }
+
 
 }

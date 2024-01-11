@@ -6,7 +6,7 @@ import com.todo.todo.business.request.TodoRequest;
 import com.todo.todo.business.request.UpdateTodoRequest;
 import com.todo.todo.business.response.GetByIdResponse;
 import com.todo.todo.business.response.TodoResponse;
-import com.todo.todo.configuration.MyServerConfiguration;
+//import com.todo.todo.configuration.MyServerConfiguration;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,49 +22,39 @@ import java.util.List;
 @RequestMapping("/todos")
 public class TodosController {
 
-   // @Value("${my.var : this is default value}")
-   // String var;
-
-
-  //  MyServerConfiguration myServerConfiguration;
 
     private TodoService todoService;
-/*
-  String getConfig(){
-    String value = String.format("hallo $s",var);
-    return value;
-}
-
- */
 
 
     @GetMapping()
-    public List<TodoResponse> listAll(){
-       return todoService.listAll();
+    public List<TodoResponse> listAll() {
+        return todoService.listAll();
     }
 
-    @ResponseStatus(code = HttpStatus.CREATED) // 201 response dondurmesi icin
+    @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
-    public void save( @RequestBody  TodoRequest todoRequest){
+    public void save(@RequestBody TodoRequest todoRequest) {
         this.todoService.save(todoRequest);
     }
 
 
-    @ResponseStatus(code = HttpStatus.NO_CONTENT)  // 204 response dondurur icerigin silindigini belirtir.
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
-    public void delete( @PathVariable int id){
+    public void delete(@PathVariable int id) {
         this.todoService.delete(id);
     }
 
     @ResponseStatus(code = HttpStatus.OK)
     @PutMapping("/{id}")
-    public GetByIdResponse getById( @PathVariable int id){
-       return todoService.getById(id);
+    public GetByIdResponse getById(@PathVariable int id) {
+        return todoService.getById(id);
     }
 
     @ResponseStatus(code = HttpStatus.OK)
     @PutMapping("update/{id}")
-    public void update(@PathVariable int id, @RequestBody UpdateTodoRequest updateTodoRequest){
-        todoService.update(id,updateTodoRequest);
+    public void update(@PathVariable int id, @RequestBody UpdateTodoRequest updateTodoRequest) {
+        todoService.update(id, updateTodoRequest);
     }
+
+
 }

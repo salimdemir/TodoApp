@@ -18,7 +18,7 @@ services:
    # build:
      # dockerfile: ./Dockerfile
      # context: .
-    image: abcd
+    image: salimdemir/todoapi:v1.0
     container_name: todoapp_container
     ports:
       - 8081:8081

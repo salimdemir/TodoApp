@@ -12,37 +12,38 @@ import java.util.List;
 public class TodoExceptionHandler {
 
     @ExceptionHandler(TodoCannotExists_Exception.class)
-    public ResponseEntity<?> existsTodo(TodoCannotExists_Exception todoCannotExistsException){
+    public ResponseEntity<?> existsTodo(TodoCannotExists_Exception todoCannotExistsException) {
 
-        List<String>detail=new ArrayList<>();
+        List<String> detail = new ArrayList<>();
         detail.add(todoCannotExistsException.getMessage());
 
-        ErrorResponse errorResponse = new ErrorResponse("Todo name is already exists",detail);
+        ErrorResponse errorResponse = new ErrorResponse("Todo name is already exists", detail);
 
-        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);  // not found
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
 
-
     @ExceptionHandler(TodoNotFoundException.class)
-    public ResponseEntity<?> notFoundTodo(TodoNotFoundException todoNotFoundException){
+    public ResponseEntity<?> notFoundTodo(TodoNotFoundException todoNotFoundException) {
 
-        List<String>detail=new ArrayList<>();
+        List<String> detail = new ArrayList<>();
         detail.add(todoNotFoundException.getMessage());
 
-        ErrorResponse errorResponse = new ErrorResponse("Todo not found",detail);
+        ErrorResponse errorResponse = new ErrorResponse("Todo not found", detail);
 
-        return new ResponseEntity<>(errorResponse,HttpStatus.BAD_REQUEST);  // not found
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
 
     @ExceptionHandler(EmptyListException.class)
-    public ResponseEntity<?> emptyTodoList(EmptyListException emptyListException){
+    public ResponseEntity<?> emptyTodoList(EmptyListException emptyListException) {
         List<String> detail = new ArrayList<>();
         detail.add(emptyListException.getMessage());
 
-        ErrorResponse errorResponse = new ErrorResponse("Liste bos",detail);
+        ErrorResponse errorResponse = new ErrorResponse("Liste bos", detail);
 
-        return new ResponseEntity<>(errorResponse,HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
+
+
 }

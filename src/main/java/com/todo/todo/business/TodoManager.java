@@ -23,7 +23,7 @@ public class TodoManager implements TodoService {
     private TodoRules todoRules;
 
 
-    public List<TodoResponse>listAllActive(){
+    public List<TodoResponse> listAllActive() {
 
         List<Todo> all = todoRepository.findAll();
         List<TodoResponse> list = all.stream()
@@ -33,6 +33,7 @@ public class TodoManager implements TodoService {
         return list;
 
     }
+
     @Override
     public List<TodoResponse> listAll() {
 
@@ -48,11 +49,10 @@ public class TodoManager implements TodoService {
 
     @Override
     public void save(TodoRequest todoRequest) {
-         this.todoRules.checkIfTodoExists(todoRequest.getName());
+        this.todoRules.checkIfTodoExists(todoRequest.getName());
         Todo todo = this.modelMapperService.forRequest().map(todoRequest, Todo.class);
         this.todoRepository.save(todo);
     }
-
 
 
     @Override
@@ -71,20 +71,10 @@ public class TodoManager implements TodoService {
 
     @Override
     public void update(int id, UpdateTodoRequest updateTodoRequest) {
-      Todo todo = this.todoRepository.findById(id).orElseThrow();
-     //  this.modelMapperService.forRequest().map(updateTodoRequest, Todo.class);
-
+        Todo todo = this.todoRepository.findById(id).orElseThrow();
         todo.setName(updateTodoRequest.getName());
         todo.setChecked(updateTodoRequest.isChecked());
-
         todoRepository.save(todo);
-
-
-        /*
-        Todo todo = this.modelMapperService.forRequest().map(updateTodoRequest, Todo.class);
-        this.todoRepository.save(todo);
-
-         */
 
     }
 
